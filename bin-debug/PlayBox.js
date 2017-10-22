@@ -30,13 +30,13 @@ var PlayBox = (function (_super) {
         var outer = new egret.Shape();
         outer.graphics.lineStyle(10, 0x3cb371);
         outer.graphics.beginFill(0xffffff, 1);
-        outer.graphics.drawRect(45, 45, 420, 420);
+        outer.graphics.drawRect(45, 45, 550, 550);
         outer.graphics.endFill();
         this.addChild(outer);
         // 绘制开始按钮
         var btn = new egret.Shape();
         btn.graphics.beginFill(0x00bbff, 1);
-        btn.graphics.drawCircle(320, 550, 40);
+        btn.graphics.drawCircle(stageW / 2, 650, 40);
         btn.graphics.endFill();
         this.addChild(btn);
         btn.touchEnabled = true;
@@ -44,27 +44,27 @@ var PlayBox = (function (_super) {
         // 向上按钮
         var up = new egret.Shape();
         up.graphics.beginFill(0x4169e1, 1);
-        up.graphics.drawRoundRect(280, 650, 80, 80, 5);
+        up.graphics.drawRoundRect(stageW / 2 - 40, 750, 80, 80, 5);
         up.graphics.endFill();
         this.addChild(up);
         up.touchEnabled = true;
         up.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            this.fx = this.arr[1] - this.arr[0] == (this.n = -20) ? this.fx : this.n;
+            this.fx = this.arr[1] - this.arr[0] == (this.n = -27) ? this.fx : this.n;
         }, this);
         // 向下按钮
         var down = new egret.Shape();
         down.graphics.beginFill(0x4169e1, 1);
-        down.graphics.drawRoundRect(280, 850, 80, 80, 5);
+        down.graphics.drawRoundRect(stageW / 2 - 40, 950, 80, 80, 5);
         down.graphics.endFill();
         this.addChild(down);
         down.touchEnabled = true;
         down.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            this.fx = this.arr[1] - this.arr[0] == (this.n = 20) ? this.fx : this.n;
+            this.fx = this.arr[1] - this.arr[0] == (this.n = 27) ? this.fx : this.n;
         }, this);
         // 向左按钮
         var left = new egret.Shape();
         left.graphics.beginFill(0x4169e1, 1);
-        left.graphics.drawRoundRect(180, 750, 80, 80, 5);
+        left.graphics.drawRoundRect(stageW / 2 - 180, 850, 80, 80, 5);
         left.graphics.endFill();
         this.addChild(left);
         left.touchEnabled = true;
@@ -74,7 +74,7 @@ var PlayBox = (function (_super) {
         // 向右按钮
         var right = new egret.Shape();
         right.graphics.beginFill(0x4169e1, 1);
-        right.graphics.drawRoundRect(380, 750, 80, 80, 5);
+        right.graphics.drawRoundRect(stageW / 2 + 100, 850, 80, 80, 5);
         right.graphics.endFill();
         this.addChild(right);
         right.touchEnabled = true;
@@ -84,34 +84,48 @@ var PlayBox = (function (_super) {
     };
     PlayBox.prototype.gameInit = function () {
         console.log('游戏开始');
-        this.arr = [42, 41];
-        this.dz = 43;
+        this.arr = [54, 53];
+        this.dz = 55;
         this.fx = 1;
-        this.snakeInit();
+        this.snakeInit(500);
     };
-    PlayBox.prototype.snakeInit = function () {
+    PlayBox.prototype.snakeInit = function (speed) {
         var _this = this;
         this.arr.unshift(this.n = this.arr[0] + this.fx);
-        if (this.arr.indexOf(this.n, 1) > 0 || this.n < 0 || this.n > 399 || this.fx == 1 && this.n % 20 == 0 || this.fx == -1 && this.n % 20 == 19) {
+        if (this.arr.indexOf(this.n, 1) > 0 || this.n < 0 || this.n > 728 || this.fx == 1 && this.n % 27 == 0 || this.fx == -1 && this.n % 27 == 26) {
             return alert('over');
         }
         this.drawRectItem(this.n, 0x000000, 1);
         if (this.n == this.dz) {
             this.musicInt = new Playmusic();
             this.musicInt.loadEatSound();
-            while (this.arr.indexOf(this.dz = ~~(Math.random() * 400)) >= 0)
+            while (this.arr.indexOf(this.dz = ~~(Math.random() * 729)) >= 0)
                 ;
             this.drawRectItem(this.dz, 0xee82ee, 1);
         }
         else {
             this.drawRectItem(this.arr.pop(), 0xffffff, 1);
         }
-        setTimeout(function () { return _this.snakeInit(); }, 500);
+        var _speed;
+        var len = this.arr.length;
+        if (len < 5) {
+            _speed = 500;
+        }
+        else if (len < 10) {
+            _speed = 200;
+        }
+        else if (len < 15) {
+            _speed = 100;
+        }
+        else {
+            _speed = 100;
+        }
+        setTimeout(function () { return _this.snakeInit(_speed); }, speed);
     };
     PlayBox.prototype.drawRectItem = function (index, color, opacity) {
         // 绘制方块
-        var x = index % 20 * 20 + 50 + 1;
-        var y = ~~(index / 20) * 20 + 50 + 1;
+        var x = index % 27 * 20 + 50 + 1;
+        var y = ~~(index / 27) * 20 + 50 + 1;
         var rect = new egret.Shape();
         rect.graphics.beginFill(color, opacity);
         rect.graphics.drawRect(x, y, 18, 18);

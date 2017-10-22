@@ -19,7 +19,7 @@ var Playmusic = (function (_super) {
     //加载背景音乐
     Playmusic.prototype.loadBackSound = function () {
         var sound = this._sound = RES.getRes('Chinese_Cute_Scene_mp3');
-        var channel = this._channel = sound.play(0, -1);
+        var channel = this._channel = sound.play(0, 1);
     };
     //关闭背景音乐
     Playmusic.prototype.stopBackSound = function () {

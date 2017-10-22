@@ -10,7 +10,7 @@ class Playmusic extends egret.DisplayObjectContainer {
     //加载背景音乐
     public loadBackSound(): void {
         let sound: egret.Sound = this._sound = RES.getRes('Chinese_Cute_Scene_mp3');
-        let channel: egret.SoundChannel = this._channel = sound.play(0,-1);
+        let channel: egret.SoundChannel = this._channel = sound.play(0,1);
     }
 
     //关闭背景音乐
