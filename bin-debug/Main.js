@@ -222,7 +222,7 @@ var Main = (function (_super) {
     };
     // 加载游戏场景
     Main.prototype.loadPlayBox = function () {
-        this.musicInt.stopBackSound();
+        // this.musicInt.stopBackSound();
         this.playBox = new PlayBox();
         this.addChild(this.playBox);
     };

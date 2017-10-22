@@ -19,7 +19,7 @@ var Playmusic = (function (_super) {
     //加载背景音乐
     Playmusic.prototype.loadBackSound = function () {
         var sound = this._sound = RES.getRes('Chinese_Cute_Scene_mp3');
-        var channel = this._channel = sound.play(0, 1);
+        var channel = this._channel = sound.play(0, -1);
     };
     //关闭背景音乐
     Playmusic.prototype.stopBackSound = function () {
@@ -27,7 +27,7 @@ var Playmusic = (function (_super) {
     };
     //加载吃到的音效
     Playmusic.prototype.loadEatSound = function () {
-        var eat_sound = RES.getRes('playBackMusic');
+        var eat_sound = RES.getRes('anniu-kehuan1_mp3');
         var eat_channel = eat_sound.play(0, 1);
     };
     return Playmusic;

@@ -245,7 +245,7 @@ class Main extends egret.DisplayObjectContainer {
 
     // 加载游戏场景
     private loadPlayBox(): void {
-        this.musicInt.stopBackSound();
+        // this.musicInt.stopBackSound();
         this.playBox = new PlayBox();
         this.addChild(this.playBox); 
     }
