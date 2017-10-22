@@ -1,0 +1,55 @@
+{
+	"groups": [
+		{
+			"keys": "bg_jpg,egret_icon_png,description_json,anniu-kehuan1_mp3,Casual_Failure_mp3,Chinese_Cute_Scene_mp3,Electronica_Failure2_mp3,Jue_Shi_-_Qiao_Pi_-_Xiu_Xian_mp3,timg_jpeg",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"name": "bg_jpg",
+			"type": "image",
+			"url": "assets/bg.jpg"
+		},
+		{
+			"name": "egret_icon_png",
+			"type": "image",
+			"url": "assets/egret_icon.png"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "anniu-kehuan1_mp3",
+			"type": "sound",
+			"url": "assets/anniu-kehuan1.mp3"
+		},
+		{
+			"name": "Casual_Failure_mp3",
+			"type": "sound",
+			"url": "assets/Casual_Failure.mp3"
+		},
+		{
+			"name": "Chinese_Cute_Scene_mp3",
+			"type": "sound",
+			"url": "assets/Chinese_Cute_Scene.mp3"
+		},
+		{
+			"name": "Electronica_Failure2_mp3",
+			"type": "sound",
+			"url": "assets/Electronica_Failure2.mp3"
+		},
+		{
+			"name": "Jue_Shi_-_Qiao_Pi_-_Xiu_Xian_mp3",
+			"type": "sound",
+			"url": "assets/Jue_Shi_-_Qiao_Pi_-_Xiu_Xian.mp3"
+		},
+		{
+			"name": "timg_jpeg",
+			"type": "image",
+			"url": "assets/timg.jpeg"
+		}
+	]
+}
